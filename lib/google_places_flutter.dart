@@ -166,11 +166,12 @@ class _GooglePlaceAutoCompleteTextFieldState
 
   removeOverlay() {
     alPredictions.clear();
-    this._overlayEntry = this._createOverlayEntry();
+    _overlayEntry?.remove();
+    /*this._overlayEntry = this._createOverlayEntry();
     if (context != null) {
       Overlay.of(context)!.insert(this._overlayEntry!);
       this._overlayEntry!.markNeedsBuild();
-    }
+    }*/
   }
 
   Future<Response?> getPlaceDetailsFromPlaceId(Prediction prediction) async {
