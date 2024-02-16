@@ -35,6 +35,7 @@ class Prediction {
   List<String>? types;
   String? lat;
   String? lng;
+  String? country;
 
   Prediction(
       {this.description,
@@ -45,6 +46,7 @@ class Prediction {
       this.structuredFormatting,
       this.terms,
       this.types,
+      this.country,
       this.lat,
       this.lng});
 
@@ -63,7 +65,7 @@ class Prediction {
         ? new StructuredFormatting.fromJson(json['structured_formatting'])
         : null;
     if (json['terms'] != null) {
-      terms =[];
+      terms = [];
       json['terms'].forEach((v) {
         terms!.add(new Terms.fromJson(v));
       });
@@ -71,6 +73,7 @@ class Prediction {
     types = json['types'].cast<String>();
     lat = json['lat'];
     lng = json['lng'];
+    country = json['country'];
   }
 
   Map<String, dynamic> toJson() {
@@ -92,6 +95,7 @@ class Prediction {
     data['types'] = this.types;
     data['lat'] = this.lat;
     data['lng'] = this.lng;
+    data['country'] = this.country;
 
     return data;
   }

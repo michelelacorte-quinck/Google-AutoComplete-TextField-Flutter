@@ -241,6 +241,16 @@ class _GooglePlaceAutoCompleteTextFieldState
 
     PlaceDetails placeDetails = PlaceDetails.fromJson(response.data);
 
+    String? country;
+    placeDetails.result!.addressComponents?.forEach((element) {
+      element.types?.forEach((type) {
+        if(type.contains('country')) {
+          country = element.longName;
+        }
+      });
+    });
+
+    prediction.country = country;
     prediction.lat = placeDetails.result!.geometry!.location!.lat.toString();
     prediction.lng = placeDetails.result!.geometry!.location!.lng.toString();
 
