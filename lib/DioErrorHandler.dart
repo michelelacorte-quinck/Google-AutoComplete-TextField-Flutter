@@ -134,7 +134,7 @@ class ErrorHandler {
   ErrorResponse handleError(var error) {
     if(error.runtimeType.toString().toLowerCase() =="_TypeError".toLowerCase()){
       // return error.toString();
-      errorResponse.message ="The Provided API key is invalid";
+      errorResponse.message ="Something went wrong...";
       return errorResponse;
     }
 
@@ -142,7 +142,7 @@ class ErrorHandler {
     else if(error is DioError) {
       return DioErrorHandler().handleDioError(error);
     }
-    errorResponse.message = "The Provided API key is invalid";
+    errorResponse.message = "Something went wrong...";
     return errorResponse;
   }
 
